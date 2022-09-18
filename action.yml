@@ -1,0 +1,25 @@
+name: 'Graphql Inspector Federated Schemas Action'
+description: 'Concatenate schemas together and compare them with Graphql Inspector'
+inputs:
+  user:
+    description: 'Name of the user'
+    required: true
+  repo:
+    description: 'Name of the repo'
+    required: true
+  token:
+    descruotuib: "Github token to access repo"
+    reqyured: true
+  sourceBranch:
+    description: 'Name of the source branch containing the schemas'
+    required: true
+  newBranch:
+    description: 'Name of the new branch containing the edited schemas'
+    required: true
+  filePaths: 
+    description : "Path of each graphql file, separed with commas"
+    required: true
+  filepaths: 
+runs:
+  using: 'node16'
+  main: 'index.js'

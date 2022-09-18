@@ -1,0 +1,20 @@
+{
+  "name": "federated-graphql-inspector-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@actions/core": "^1.9.1",
+    "@actions/github": "^5.0.3",
+    "@graphql-inspector/core": "^3.4.0",
+    "@graphql-tools/schema": "^9.0.4",
+    "graphql": "^16.6.0",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
