@@ -62,5 +62,5 @@ const compareSchemas = async () => {
 compareSchemas().then(() => {
     console.log("Changes are safe to apply");
 }).catch((err) => {
-    console.error(err);
+    core.setFailed(err);
 })
