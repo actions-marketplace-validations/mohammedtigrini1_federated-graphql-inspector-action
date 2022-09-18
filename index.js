@@ -43,6 +43,7 @@ async function buildFederatedSchema(user, repo, branch, filePaths, token) {
     return makeExecutableSchema({typeDefs});
 }
 
+
 const compareSchemas = async () => {
     const sourceFederatedSchema = await buildFederatedSchema(user, repo, sourceBranch, filePaths, TOKEN).catch(err => { throw(err); });
     const newFederatedSchema = await buildFederatedSchema(user, repo, newBranch, filePaths, TOKEN).catch(err => { throw(err); });
