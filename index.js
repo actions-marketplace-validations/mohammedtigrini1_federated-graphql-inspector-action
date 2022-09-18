@@ -8,13 +8,15 @@ const user = core.getInput('user');
 const repo = core.getInput('repo') ;
 const sourceBranch = core.getInput('sourceBranch');
 const newBranch = core.getInput('newBranch');
-const filePaths = core.getInput('filePaths').replace(/\s/g, '').split(',');
-const TOKEN = core.getInput('token');
+const filePaths = core.getInput('filePaths').replace(/\s/g, '').split(',') ;
+
+const TOKEN = core.getInput('token'); 
 
 async function buildFederatedSchema(user, repo, branch, filePaths, token) {
     let typeDefs = ``;
     for(let fP of filePaths) {
         let url = `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${fP}?token=${token}`;
+        console.log(url);
         var options = {
             url: url,
             headers: {
@@ -25,10 +27,12 @@ async function buildFederatedSchema(user, repo, branch, filePaths, token) {
         await new Promise((resolve, reject) => {
             request(options, (error, response, body) => {
                 if(error) {
+                    console.log(err);
                     reject(`'Error fetching file ${fP}'`);
                 }
 
                 if(body.includes('404')) {
+                    console.log(err);
                     reject(`'Error fetching file ${fP}'`);
                 }
 
@@ -62,5 +66,5 @@ const compareSchemas = async () => {
 compareSchemas().then(() => {
     console.log("Changes are safe to apply");
 }).catch((err) => {
-    core.setFailed(err);
+    console.error(err);
 })
