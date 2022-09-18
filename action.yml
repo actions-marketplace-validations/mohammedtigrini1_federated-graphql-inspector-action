@@ -19,7 +19,6 @@ inputs:
   filePaths: 
     description : "Path of each graphql file, separed with commas"
     required: true
-  filepaths: 
 runs:
   using: 'node16'
   main: 'index.js'
