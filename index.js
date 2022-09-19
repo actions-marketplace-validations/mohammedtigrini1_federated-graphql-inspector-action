@@ -67,8 +67,6 @@ const compareSchemas = async () => {
     });
 }
 
-console.log(newBranch);
-
 compareSchemas().then(() => {
     console.log("Changes are safe to apply");
 }).catch((err) => {
