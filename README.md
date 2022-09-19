@@ -28,6 +28,9 @@ jobs:
        shell: bash
        run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
        id: myref
+     - name: Sleep for 5 seconds
+       run: sleep 5s
+       shell: bash
      - name: Graphql Inspector Federated Schemas Action
        uses: mohammedtigrini1/federated-graphql-inspector-action@v1.0.5
        with:
