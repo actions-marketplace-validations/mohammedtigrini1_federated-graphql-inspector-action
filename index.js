@@ -10,6 +10,7 @@ const newBranch = core.getInput('newBranch');
 const filePaths = core.getInput('filePaths').replace(/\s/g, '').split(',') ;
 const TOKEN = core.getInput('token'); 
 
+
 async function getFile(options) {
     return new Promise((resolve, reject) => {
         request(options, (error, response, body) => {
@@ -65,6 +66,8 @@ const compareSchemas = async () => {
         });
     });
 }
+
+console.log(newBranch);
 
 compareSchemas().then(() => {
     console.log("Changes are safe to apply");
