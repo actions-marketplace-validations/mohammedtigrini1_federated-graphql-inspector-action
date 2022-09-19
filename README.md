@@ -11,3 +11,30 @@ This github action will concatenate schemas in two different branches and compar
 | `newBranch`  | New branch containing the edited schemas |
 | `filePaths`  | Paths for the graphql files (separated by commas) |
 | `token`  | Access token for the github repo |
+
+
+## Example workflow
+```yml
+name: CI
+ 
+on: [push]
+ 
+jobs:
+  job1:
+    name: Concatenate Schemas
+    runs-on: ubuntu-latest
+    steps:
+     - name: Get the current branch name
+       shell: bash
+       run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
+       id: myref
+     - name: Graphql Inspector Federated Schemas Action
+       uses: mohammedtigrini1/federated-graphql-inspector-action@v1.0.5
+       with:
+         user: MY_USERNAME
+         repo: MY_REPO
+         token: ${{ secrets.TOKEN }}
+         sourceBranch: MY_SOURCE_BRANCH
+         newBranch: ${{ steps.myref.outputs.branch }}
+         filePaths: file1.graphql, file2.graphql, file3.graphql
+```
